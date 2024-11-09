@@ -1,5 +1,7 @@
 // src/components/Footer.jsx
 import React from 'react';
+// Import Font Awesome Icons
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -7,7 +9,6 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         {/* Footer Content Container */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
           {/* Logo and Description */}
           <div className="mb-6 md:mb-0">
             <h1 className="text-3xl font-bold text-yellow-400">Codenest</h1>
@@ -39,54 +40,52 @@ const Footer = () => {
             <p className="text-sm">Phone: <a href="tel:+123456789" className="hover:underline text-blue-400">+1 234 567 89</a></p>
             <p className="text-sm">Address: 123 Code Street, Tech City, Country</p>
           </div>
-
         </div>
 
         {/* Newsletter Subscription */}
-      {/* Newsletter Subscription */}
-<div className="bg-gray-800 p-6 rounded-md mt-10">
-  <h3 className="text-xl font-semibold mb-4">Subscribe to Our Newsletter</h3>
-  <p className="text-sm mb-4">Get the latest updates on coding resources, new courses, and more. Join our community today!</p>
-  
-  {/* Add gap-4 to create space between input and button */}
-  <div className="flex flex-col md:flex-row items-center md:gap-4">
-    <input
-      type="email"
-      className="bg-gray-700 text-white px-4 py-2 rounded-md mb-4 md:mb-0 md:w-2/3"
-      placeholder="Enter your email"
-    />
-    <button className="bg-yellow-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-yellow-600">
-      Subscribe
-    </button>
-  </div>
-</div>
-</div>
-
-      {/* Footer Bottom */}
-      <div className="mt-12 border-t border-gray-700 pt-6">
-        <div className="flex justify-between items-center">
-          {/* Social Media Links */}
-          <div className="flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-
-          {/* Copyright */}
-          <div className="text-center text-gray-500 text-sm">
-            © 2024 Codenest. All Rights Reserved. <br />
-            <a href="#privacy" className="text-sm text-gray-400 hover:underline">Privacy Policy</a> | <a href="#terms" className="text-sm text-gray-400 hover:underline">Terms of Service</a>
+        <div className="bg-gray-800 p-6 rounded-md mt-10">
+          <h3 className="text-xl font-semibold mb-4">Subscribe to Our Newsletter</h3>
+          <p className="text-sm mb-4">Get the latest updates on coding resources, new courses, and more. Join our community today!</p>
+          
+          {/* Add gap-4 to create space between input and button */}
+          <div className="flex flex-col md:flex-row items-center md:gap-4">
+            <input
+              type="email"
+              className="bg-gray-700 text-white px-4 py-2 rounded-md mb-4 md:mb-0 md:w-2/3"
+              placeholder="Enter your email"
+            />
+            <button className="bg-yellow-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-yellow-600">
+              Subscribe
+            </button>
           </div>
         </div>
-      </div>
-    </footer>
-  );
-};
+
+        {/* Footer Bottom */}
+        <div className="mt-12 border-t border-gray-700 pt-6">
+          <div className="flex justify-between items-center">
+            {/* Social Media Links */}
+            <div className="flex space-x-6">
+              <a href="https://github.com/ramraja1" className="text-gray-400 hover:text-white">
+                <FaFacebookF />
+              </a>
+              <a href="https://www.geeksforgeeks.org/user/ramtiwaz8jh/" className="text-gray-400 hover:text-white">
+                <FaTwitter />
+              </a>
+              <a href="https://www.linkedin.com/in/pawan-tiwari-922284246" className="text-gray-400 hover:text-white">
+                <FaLinkedinIn />
+              </a>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-center text-gray-500 text-sm">
+              © 2024 Codenest. All Rights Reserved. <br />
+              <a href="#privacy" className="text-sm text-gray-400 hover:underline">Privacy Policy</a> | <a href="#terms" className="text-sm text-gray-400 hover:underline">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </footer>
+    );
+  };
 
 export default Footer;
