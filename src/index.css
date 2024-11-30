@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Slow Rain Effect */
+/* Slow Rain Effect *//* rain.css */
+
 @keyframes rain {
   0% {
     transform: translateY(-100vh);
@@ -15,14 +16,21 @@
 }
 
 .rain-container {
-  position: relative;
-  overflow: hidden;
-  height: 100vh; /* Full-screen height */
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none; /* Allows interactions with content underneath */
 }
 
 .rain-container::before,
-.rain-container::after {
+.rain-container::after,
+.rain-container .drop-1,
+.rain-container .drop-2,
+.rain-container .drop-3,
+.rain-container .drop-4 {
   content: '';
   position: absolute;
   top: -100%;
@@ -32,7 +40,7 @@
   animation: rain linear infinite;
 }
 
-/* Individual drop styles with varied speeds and positions */
+/* Primary drops */
 .rain-container::before {
   left: 20%;
   animation-duration: 3s;
@@ -43,21 +51,7 @@
   animation-duration: 2.7s;
 }
 
-/* Additional drops with classes for variation */
-.rain-container .drop-1,
-.rain-container .drop-2,
-.rain-container .drop-3,
-.rain-container .drop-4 {
-  content: '';
-  position: absolute;
-  top: -100%;
-  width: 2px;
-  height: 200%;
-  background: rgba(237, 237, 240, 0.3);
-  animation: rain linear infinite;
-}
-
-/* Set different positions and durations for each drop */
+/* Additional drops */
 .rain-container .drop-1 { left: 30%; animation-duration: 4s; }
 .rain-container .drop-2 { left: 60%; animation-duration: 4.5s; }
 .rain-container .drop-3 { left: 45%; animation-duration: 3.5s; }

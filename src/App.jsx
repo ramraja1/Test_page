@@ -8,6 +8,7 @@ import Team from './component/team';
 import About from './component/About';
 import Login from './component/Login';
 import Signup from './component/Signup';
+import StudentDashboard from './component/student';
 import 'animate.css';
 
 
@@ -16,6 +17,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
+        
         <Route path="/" element={<Body />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
@@ -24,7 +26,9 @@ function App() {
       <Features />
       <Team />
       <Footer />
+      
     </Router>
+    
   );
 }
 

@@ -1,8 +1,7 @@
-// src/component/Signup.jsx
 import React from 'react';
 
 const Signup = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-100">
+  <div className="flex items-center justify-center w-full">
     <form className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Sign Up</h2>
       <input

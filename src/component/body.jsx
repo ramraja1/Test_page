@@ -1,119 +1,100 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import 'animate.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "animate.css";
+import Modal from "./model";
+import Login from "./Login";
+import Signup from "./Signup";
 
-const Body = ({ onLoginClick, onSignupClick }) => {
-  const [key, setKey] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isKeyValid, setIsKeyValid] = useState(false);
-  const navigate = useNavigate();
+const Body = () => {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
-  const correctKey = 'testKey123';
+  const openLoginModal = () => setIsLoginModalOpen(true);
+  const closeLoginModal = () => setIsLoginModalOpen(false);
 
-  const handleKeyChange = (event) => {
-    setKey(event.target.value);
-  };
-
-  const handleSubmitKey = () => {
-    if (key === correctKey) {
-      setIsKeyValid(true);
-      setErrorMessage('');
-      navigate('/demo-test'); // Redirect to the test page for student
-    } else {
-      setIsKeyValid(false);
-      setErrorMessage('Incorrect key, please try again.');
-    }
-  };
+  const openSignupModal = () => setIsSignupModalOpen(true);
+  const closeSignupModal = () => setIsSignupModalOpen(false);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-gray-800 via-gray-900 to-black">
-      {/* Codenest Title and Description */}
-      <div className="text-center text-white pt-32 mb-12">
-        <h1 className="text-5xl font-semibold mb-4 animate__animated animate__fadeIn animate__delay-1s">
-          Welcome to Codenest
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-gray-800 via-gray-900 to-black text-white">
+      {/* Title and Description */}
+      <div className="text-center pt-32 mb-12">
+        <h1 className="text-5xl font-extrabold mb-4 animate__animated animate__fadeIn animate__delay-1s text-yellow-400">
+          Welcome to <span className="text-teal-400">Codenest</span>
         </h1>
-        <p className="text-xl font-light mb-6 animate__animated animate__fadeIn animate__delay-1.5s">
-          Codenest is a platform where teachers can create coding tests and students can take them. Enhance your coding skills with us.
+        <p className="text-xl font-light mb-6 animate__animated animate__fadeIn animate__delay-1s">
+          Empowering teachers to create coding tests and students to excel.
         </p>
       </div>
 
-      {/* Main Content Container */}
-      <div className="flex items-center justify-center h-full px-8">
-        {/* Admin (Teacher) Side */}
-        <div className="w-1/2 p-8 flex flex-col items-center text-white animate__animated animate__fadeIn animate__delay-2s">
-          <h2 className="text-4xl font-semibold mb-6 text-yellow-400">Admin Dashboard</h2>
-          <p className="text-xl font-light mb-8 text-center">
-            As a teacher, you can create and manage tests for students. Sign up now to start.
+      {/* Main Content */}
+      <div className="flex flex-col md:flex-row items-center justify-center px-8">
+        {/* Admin Section */}
+        <div className="w-full md:w-1/2 p-8 flex flex-col items-center bg-gray-800 rounded-lg shadow-lg mx-4 animate__animated animate__fadeInLeft animate__delay-2s">
+          <h2 className="text-4xl font-semibold mb-6 text-blue-400">
+            Admin Dashboard
+          </h2>
+          <p className="text-lg font-light mb-8 text-center">
+            As a teacher, you can create and manage tests for students. Sign up
+            now to start.
           </p>
           <div className="flex space-x-6">
-            <Link to="/login" className="px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            <button
+              onClick={openLoginModal}
+              className="px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
               Log In
-            </Link>
-            <Link to="/signup" className="px-10 py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            </button>
+            <button
+              onClick={openSignupModal}
+              className="px-10 py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
               Sign Up
-            </Link>
+            </button>
           </div>
         </div>
 
         {/* Vertical Divider */}
-        <div className="w-px h-96 bg-gray-500 mx-6"></div>
+        <div className="hidden md:block h-96 w-px bg-gray-500 mx-8"></div>
 
-        {/* Student Side */}
-        <div className="w-1/2 p-8 flex flex-col items-center text-white animate__animated animate__fadeIn animate__delay-3s">
-          <h2 className="text-4xl font-semibold mb-6 text-yellow-400">Student Access</h2>
-          <p className="text-xl font-light mb-8 text-center">
-            Enter the access key to start your test. Please make sure to enter the correct key.
+        {/* Student Section */}
+        <div className="w-full md:w-1/2 p-8 flex flex-col items-center bg-gray-800 rounded-lg shadow-lg mx-4 animate__animated animate__fadeInRight animate__delay-3s">
+          <h2 className="text-4xl font-semibold mb-6 text-teal-400">
+            Student Access
+          </h2>
+          <p className="text-lg font-light mb-8 text-center">
+            As a student, you can take coding tests to improve your programming skills. Sign up
+            now to start.
           </p>
-          
-          {/* Key Input and Submit in Horizontal Line */}
-          <div className="flex space-x-4 mb-4">
-            <input
-              type="text"
-              value={key}
-              onChange={handleKeyChange}
-              className="px-4 py-2 rounded-md text-black w-64 focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all duration-300"
-              placeholder="Enter access key"
-            />
+
+          <div className="flex space-x-6">
             <button
-              onClick={handleSubmitKey}
-              className="bg-teal-500 text-white py-3 px-8 rounded-lg shadow-lg hover:bg-teal-600 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+              onClick={openLoginModal}
+              className="px-8 py-3 bg-teal-500 text-white rounded-md hover:bg-teal-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
             >
-              Submit
+              Log In
+            </button>
+            <button
+              onClick={openSignupModal}
+              className="px-10 py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              Sign Up
             </button>
           </div>
-
-          {/* Error message */}
-          {errorMessage && (
-            <div className="mt-4 text-red-500">
-              {errorMessage}
-            </div>
-          )}
         </div>
       </div>
 
-      {/* Animation Libraries for Dynamic Effects */}
-      <style jsx>{`
-        .animate__animated {
-          animation-duration: 1s;
-          animation-fill-mode: both;
-        }
-        .animate__fadeIn {
-          animation-name: fadeIn;
-        }
-        .animate__delay-0.7s {
-          animation-delay: 0.7s;
-        }
-        .animate__delay-1s {
-          animation-delay: 1s;
-        }
-        .animate__delay-1.5s {
-          animation-delay: 1.5s;
-        }
-        .animate__delay-2s {
-          animation-delay: 2s;
-        }
-      `}</style>
+      {/* Modals */}
+      {isLoginModalOpen && (
+        <Modal onClose={closeLoginModal}>
+          <Login />
+        </Modal>
+      )}
+      {isSignupModalOpen && (
+        <Modal onClose={closeSignupModal}>
+          <Signup />
+        </Modal>
+      )}
     </div>
   );
 };
